@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="answersStackView" destination="0yV-Gs-zsB" id="J1d-lk-pMP"/>
                         <outlet property="quizTextView" destination="yLT-x3-8tY" id="bes-xw-aF8"/>
+                        <outlet property="topBar" destination="g7U-yf-PL8" id="UBd-LH-eaM"/>
                         <segue destination="y1S-yn-XZy" kind="show" identifier="showResult" id="Hzj-J0-Lcx"/>
                     </connections>
                 </viewController>
@@ -93,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="115.84821428571428"/>
         </scene>
-        <!--Result Table View Controller-->
+        <!--結果-->
         <scene sceneID="X0u-4e-vVy">
             <objects>
-                <tableViewController id="y1S-yn-XZy" customClass="ResultTableViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="結果" id="y1S-yn-XZy" customClass="ResultTableViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gaF-CG-RFY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
