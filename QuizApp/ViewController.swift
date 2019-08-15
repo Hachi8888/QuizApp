@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     // クイズの番号を管理する番号
     var quizNum: Int = 0
     
-    
+    // 回答した問題の正誤を記録する
+    var result: [String] = []
     
 
     // クイズを表示するテキストビュー
@@ -35,8 +36,7 @@ class ViewController: UIViewController {
         
         // 問題文を表示する
         showQuiz()
-    
-    
+        wrongAlert()
     }
     
     
@@ -56,9 +56,67 @@ class ViewController: UIViewController {
     }
 
 
+    // 正解のアラートを表示する関数
+    func correctAlert() {
+        // アラートの作成
+        let alert = UIAlertController(title: "正解", message: "次に進みます", preferredStyle: .alert)
+        // アラートのアクション(ボタンの定義)
+        let OK = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        // 作成したalertにOKボタンを追加
+        alert.addAction(OK)
+        // アラートを表示する
+        present(alert, animated: true, completion: nil)
 
-    // 正解のアラートを表示させる
+       // 問題を進める
+        quizNum += 1
+        // 結果を記録する
+        result.append("◯")
 
+        // 最後の問題を回答していれば、結果の画面に遷移する。最後の問題でなければ次の問題へ進む。
+        if self.quizNum >= self.Quiz.count {
+            // 最後の問題なので結果画面へ遷移する
+            self.performSegue(withIdentifier: "showResult", sender: <#T##Any?#>)
+        } else {
+            // 次の問題を表示する
+            self.showQuiz()
+        }
+    }
+
+    // 不正解のアラートを表示させる関数
+    func wrongAlert() {
+        // アラートの作成
+        let alert = UIAlertController(title: "不正解", message: "次の問題に進みますか?", preferredStyle: .alert)
+
+        // アラートの中の進むボタンを定義 (styleは .defaultで設定すること)
+        let nextQ = UIAlertAction(title: "進む", style: .default
+            , handler: {(action: UIAlertAction!) in
+         // 進むを押したときの処理
+            // 問題番号を進める
+            self.quizNum += 1
+            // 結果を記録する
+            self.result.append("☓")
+
+            // 最後の問題を回答していれば、結果の画面に遷移する。最後の問題でなければ次の問題へ進む。
+                if self.quizNum >= self.Quiz.count {
+                    // 最後の問題なので結果画面へ遷移する
+                self.performSegue(withIdentifier: "showResult", sender: <#T##Any?#>)
+                } else {
+                    // 次の問題を表示する
+                    self.showQuiz()
+                }
+        })
+
+        // やり直しボタンを定義(押しても何も処理しない)
+        let backQ = UIAlertAction(title: "やり直す", style: .default
+            , handler: nil)
+
+        // 作成したalertに進むボタン、やり直しボタンを追加
+        alert.addAction(nextQ)
+        alert.addAction(backQ)
+
+        // アラートを表示する
+        present(alert, animated: true, completion: nil)
+    }
     
     
     // 正誤判定:1~4のボタンを紐付け(タグ番号をそれぞれ0〜3で付与)
@@ -67,28 +125,15 @@ class ViewController: UIViewController {
         // quizNumをもとに、Quizの辞書から現在の問題を特定する
         var CurrentQuiz = Quiz[quizNum]
         
-        // 回答の正誤を判定)
+        // 回答の正誤を判定
         let num = sender.tag
-        
-        if num + 1 == CurrentQuiz["correctNum"] as! Int{
+        if num + 1 == CurrentQuiz["correctNum"] as! Int {
             // 正解
-
-
-            // 最後の問題を回答したとき
-
-
+            correctAlert()
         } else {
            // 不正解
-
-            // 最後の問題を回答したとき
-
-
+            wrongAlert()
         }
-
     }
-    
-    
-
-
 }
 
