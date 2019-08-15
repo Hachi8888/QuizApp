@@ -9,9 +9,12 @@
 import UIKit
 
 class ResultTableViewController: UITableViewController {
-    
-    
-   
+
+    // 問題内容をおさめる辞書
+    let Quiz = [[]]
+
+    // 正誤の結果をsegueでうけとる
+    var catchResult: [String] = []
     
 
     override func viewDidLoad() {
@@ -29,15 +32,15 @@ class ResultTableViewController: UITableViewController {
     // セッションの中の行の数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return catchResult.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
         
+        cell.textLabel?.text = catchResult[indexPath.row]
+
 
         return cell
     }

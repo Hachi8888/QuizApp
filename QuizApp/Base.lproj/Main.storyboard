@@ -84,6 +84,7 @@
                         <barButtonItem key="backBarButtonItem" title="問題へ" id="biN-SQ-vp8"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="answersStackView" destination="0yV-Gs-zsB" id="J1d-lk-pMP"/>
                         <outlet property="quizTextView" destination="yLT-x3-8tY" id="bes-xw-aF8"/>
                         <segue destination="y1S-yn-XZy" kind="show" identifier="showResult" id="Hzj-J0-Lcx"/>
                     </connections>
@@ -101,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Ayd-3x-WEM">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" id="Ayd-3x-WEM">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ayd-3x-WEM" id="r64-Du-Zcc">
