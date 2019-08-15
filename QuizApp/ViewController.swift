@@ -10,20 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // ★紐付け、変数や定数、配列など
     // 問題表示画面のトップバー(第何問目かを表示させる)
     @IBOutlet weak var topBar: UINavigationItem!
-
     // ボタンが入っているStackViewを紐付け(配列で各ボタンが入っている状態)
     @IBOutlet weak var answersStackView: UIStackView!
+
     // クイズの番号を管理する番号
     var quizNum: Int = 0
-    
     // 回答した問題の正誤を記録する
     var result: [String] = []
-
     // segueで問題の正誤を送る
     var sendResult: [String] = []
-    
 
     // クイズを表示するテキストビュー
     @IBOutlet weak var quizTextView: UITextView!
@@ -35,14 +33,15 @@ class ViewController: UIViewController {
         ["QuizText": "2016年のオリンピック開催地であるリオ・デ・ジャネイロで、ブラジル独立100周年を記念して作られたキリスト像が立つ場所として、正しいものはどれか。\n\n1. コパカバーナの山 \n2. コルコバードの丘", "correctNum": 2]
     ]
 
-    
-    // アプリを立ち上げたら問題を表示する
+    // ★関数など
+    // アプリを最初に立ち上げたら問題を表示する
     override func viewDidLoad() {
         super.viewDidLoad()
 
         showQuiz()
     }
 
+    // 3問回答したあとに問題の表示をリセットする
     override func viewDidDisappear(_ animated: Bool) {
         showQuiz()
     }
@@ -61,8 +60,8 @@ class ViewController: UIViewController {
 
     /// 画面に表示させるボタンを1つ減らす処理
     func hideButton() {
-        /// どのボタンを消すかを決める
-        /// * ボタンの総数　ー　問題番号
+        // どのボタンを消すかを決める
+        // * ボタンの総数　ー　問題番号
         let hideButtonNumber: Int = answersStackView.arrangedSubviews.count - quizNum - 1
         // {(スタックビューの要素数) - (問題番号)}番目のボタンを隠す
         answersStackView.arrangedSubviews[hideButtonNumber].isHidden = true
@@ -180,4 +179,3 @@ class ViewController: UIViewController {
     }
 
 }
-
