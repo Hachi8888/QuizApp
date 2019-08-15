@@ -42,6 +42,10 @@ class ViewController: UIViewController {
 
         showQuiz()
     }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        showQuiz()
+    }
     
     // 問題画面を表示させる関数
     func showQuiz() {
@@ -139,9 +143,13 @@ class ViewController: UIViewController {
 
     // 正誤の結果を表示したあとにリセットする関数
     func reset() {
-        var quizNum: Int = 0
-        var result: [String] = []
-        var sendResult: [String] = []
+        quizNum = 0
+        result = []
+        sendResult = []
+
+        for button in answersStackView.arrangedSubviews {
+            button.isHidden = false
+        }
     }
 
     // 正誤判定:1~4のボタンを紐付け(タグ番号をそれぞれ0〜3で付与)
