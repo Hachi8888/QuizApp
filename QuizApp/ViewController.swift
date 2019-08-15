@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         /* quizNumをもとに、Quizの辞書から現在の問題を特定する。
          特定したCurrentQuizは、現在のクイズ番号の問題内容が配列で入っている。*/
         var CurrentQuiz = Quiz[quizNum]
-        
+    
         // 問題のタイトルを表示
         self.topBar.title = "第\(quizNum + 1)問"
         // 問題文を表示 :CurrentQuizから、"QuizText"をキーに取り出し表示する。
@@ -90,13 +90,11 @@ class ViewController: UIViewController {
                 // リセット
                 self.reset()
             }
-
         })
         // 作成したalertにOKボタンを追加
         alert.addAction(OK)
         // アラートを表示する
         present(alert, animated: true, completion: nil)
-
     }
 
     // 不正解のアラートを表示させる関数
@@ -125,7 +123,6 @@ class ViewController: UIViewController {
                     // 次の問題を表示する
                     self.showQuiz()
                 }
-                
         })
 
         // やり直しボタンを定義(押しても何も処理しない)
