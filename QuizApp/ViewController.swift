@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         showQuiz()
     }
 
-    // 3問回答したあとに問題の表示をリセットする
+    // 結果表示画面から問題に戻ったとき、問題の表示をリセットする
     override func viewDidDisappear(_ animated: Bool) {
         showQuiz()
     }
